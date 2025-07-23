@@ -1,0 +1,268 @@
+.analytics-node {
+  min-width: 500px;
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  border: 2px solid var(--level-color, #8b5cf6);
+  position: relative;
+  overflow: visible; /* Ensure handles are not clipped */
+}
+
+.rectangular-node {
+  border-radius: 16px;
+}
+
+.analytics-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15), 0 15px 15px -5px rgba(0, 0, 0, 0.06);
+}
+
+.node-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(139, 92, 246, 0.1);
+}
+
+.node-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.close-button {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ef4444;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.close-button:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  transform: scale(1.1);
+}
+
+.charts-grid {
+  display: grid;
+  gap: 16px;
+  align-items: start;
+  transition: all 0.3s ease;
+}
+
+.charts-grid-2x2 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.chart-container {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: visible; /* Ensure handles are not clipped */
+}
+
+.chart-container:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container.expandable {
+  cursor: pointer;
+  position: relative;
+}
+
+.chart-container.expandable::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #10b981, #34d399, #6ee7b7, #10b981);
+  background-size: 200% 200%;
+  opacity: 0.2; /* Much more subtle */
+  z-index: -1;
+  animation: pulseGreen 4s ease-in-out infinite, gradientShift 6s ease-in-out infinite; /* Slower animation */
+}
+
+.chart-container.expandable:hover::before {
+  opacity: 0.35; /* Subtle hover increase */
+  animation-duration: 3s, 4s; /* Slower even on hover */
+}
+
+@keyframes pulseGreen {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.02); /* Much smaller scale change */
+    opacity: 0.3;
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.chart-container.expandable:hover {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -3px rgba(16, 185, 129, 0.3);
+}
+
+.chart-hover {
+  border-color: #8b5cf6 !important;
+  background: rgba(139, 92, 246, 0.05) !important;
+}
+
+.chart-title {
+  margin: 0 0 8px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-align: center;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 120px;
+}
+
+.expand-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(139, 92, 246, 0.9);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.chart-container.expandable:hover .expand-indicator {
+  opacity: 1;
+}
+
+/* Level-specific styling */
+.analytics-node[style*="--level-color: #667eea"] {
+  box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.1), 0 10px 10px -5px rgba(102, 126, 234, 0.04);
+}
+
+.analytics-node[style*="--level-color: #f093fb"] {
+  box-shadow: 0 20px 25px -5px rgba(240, 147, 251, 0.1), 0 10px 10px -5px rgba(240, 147, 251, 0.04);
+}
+
+.analytics-node[style*="--level-color: #4facfe"] {
+  box-shadow: 0 20px 25px -5px rgba(79, 172, 254, 0.1), 0 10px 10px -5px rgba(79, 172, 254, 0.04);
+}
+
+/* Recharts styling overrides */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(139, 92, 246, 0.2);
+}
+
+.recharts-tooltip-wrapper {
+  border-radius: 8px;
+}
+
+.recharts-default-tooltip {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Custom color palette for charts */
+.recharts-area {
+  fill: url(#colorGradient);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .analytics-node {
+    min-width: 350px;
+    max-width: 400px;
+    padding: 16px;
+  }
+  
+  .charts-grid-2x2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 12px;
+  }
+  
+  .chart-wrapper {
+    height: 100px;
+  }
+}
+
+/* Animation for new nodes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.analytics-node {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Close button pulse animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.close-button:hover {
+  animation: pulse 1.5s infinite;
+} 

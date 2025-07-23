@@ -182,10 +182,10 @@ const ChartNode = ({ data, id }) => {
 
   const getLevelBackground = (level) => {
     switch (level) {
-      case 1: return 'rgba(255, 255, 255, 0.95)'; // Lightest background for level 1
-      case 2: return 'rgba(255, 255, 255, 0.85)'; // Slightly darker for level 2
-      case 3: return 'rgba(255, 255, 255, 0.75)'; // Darkest for level 3
-      default: return 'rgba(255, 255, 255, 0.95)';
+      case 1: return 'rgba(255, 255, 255, 0.98)'; // Lightest - nearly white for company level
+      case 2: return 'rgba(240, 240, 240, 0.90)'; // Light gray for second level  
+      case 3: return 'rgba(220, 220, 220, 0.85)'; // Darker gray for third level
+      default: return 'rgba(255, 255, 255, 0.98)';
     }
   };
 

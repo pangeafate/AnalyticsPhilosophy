@@ -341,7 +341,7 @@ function AnalyticsFlow() {
     // Recalculate positions with better zoom control
     setTimeout(() => {
       fitView({ 
-        padding: 50, // Reduced padding for tighter fit
+        padding: 0.1, // 10% padding to achieve 80% viewport utilization
         duration: 600,
         minZoom: 0.3, // Increased minimum zoom to prevent over-zooming
         maxZoom: 1.2
@@ -502,7 +502,7 @@ function AnalyticsFlow() {
     // Auto-zoom to fit all nodes with better timing and zoom control
     setTimeout(() => {
       fitView({ 
-        padding: 80, // Reduced padding for better node density
+        padding: 0.1, // 10% padding to achieve 80% viewport utilization
         duration: 800, // Faster animation
         minZoom: 0.3, // Increased minimum zoom to prevent over-zooming
         maxZoom: 1.2
@@ -549,7 +549,7 @@ function AnalyticsFlow() {
         defaultEdgeOptions={defaultEdgeOptions}
         fitView
         fitViewOptions={{ 
-          padding: 80, 
+          padding: 0.1, // 10% padding to achieve 80% viewport utilization
           minZoom: 0.3, // Increased minimum zoom to prevent over-zooming
           maxZoom: 1.2,
           includeHiddenNodes: false

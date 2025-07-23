@@ -25385,7 +25385,7 @@ function AnalyticsFlow() {
         // Recalculate positions with better zoom control
         setTimeout(()=>{
             fitView({
-                padding: 50,
+                padding: 0.1,
                 duration: 600,
                 minZoom: 0.3,
                 maxZoom: 1.2
@@ -25533,7 +25533,7 @@ function AnalyticsFlow() {
         // Auto-zoom to fit all nodes with better timing and zoom control
         setTimeout(()=>{
             fitView({
-                padding: 80,
+                padding: 0.1,
                 duration: 800,
                 minZoom: 0.3,
                 maxZoom: 1.2
@@ -25582,7 +25582,7 @@ function AnalyticsFlow() {
             defaultEdgeOptions: defaultEdgeOptions,
             fitView: true,
             fitViewOptions: {
-                padding: 80,
+                padding: 0.1,
                 minZoom: 0.3,
                 maxZoom: 1.2,
                 includeHiddenNodes: false
@@ -35836,13 +35836,13 @@ const ChartNode = ({ data, id })=>{
     const getLevelBackground = (level)=>{
         switch(level){
             case 1:
-                return 'rgba(255, 255, 255, 0.95)'; // Lightest background for level 1
+                return 'rgba(255, 255, 255, 0.98)'; // Lightest - nearly white for company level
             case 2:
-                return 'rgba(255, 255, 255, 0.85)'; // Slightly darker for level 2
+                return 'rgba(240, 240, 240, 0.90)'; // Light gray for second level  
             case 3:
-                return 'rgba(255, 255, 255, 0.75)'; // Darkest for level 3
+                return 'rgba(220, 220, 220, 0.85)'; // Darker gray for third level
             default:
-                return 'rgba(255, 255, 255, 0.95)';
+                return 'rgba(255, 255, 255, 0.98)';
         }
     };
     const levelColor = getLevelColor(data.level);

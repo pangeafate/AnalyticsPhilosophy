@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "parcel public/index.html --port 3000",
-    "build": "parcel build public/index.html --dist-dir dist --public-url ./",
-    "deploy": "npm run build && cp -r dist/ docs/",
+    "start": "parcel public/index.html --port 3001",
+    "build": "parcel build public/index.html --dist-dir docs --public-url ./ --no-source-maps",
+    "deploy": "rm -rf docs/ .parcel-cache/ && npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

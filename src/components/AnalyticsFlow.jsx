@@ -564,6 +564,7 @@ function AnalyticsFlow() {
           nodeStrokeColor="#8b5cf6"
           nodeColor="#f8fafc"
           nodeBorderRadius={8}
+          style={{ width: 100, height: 75 }}
         />
         <Controls 
           showZoom={true}
